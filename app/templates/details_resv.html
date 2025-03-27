@@ -1,0 +1,123 @@
+{% extends 'base_main.html'%}
+{% from 'macros/svg_icons.html' import delete, pencil %}
+
+
+{% block head_content %} 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/tables.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/details.css') }}">
+  <script defer src="{{ url_for('static', filename='scripts/delete.js') }}"></script>
+{% endblock %}
+  
+
+{% block main_content %}
+ <h1>{{ page_title }}</h1>
+
+ <div class="section">
+  <h3>Reservation</h3>
+
+  <ul>
+    <li class="list_item-name">Start Time: 
+      <span class="list_item-value">
+        {{ reservation.start_time.strftime('%d/%m/%Y %I:%M %p') }}
+      </span> 
+    </li>
+    <li class="list_item-name">End Time: 
+      <span class="list_item-value">
+        {{ reservation.end_time.strftime('%d/%m/%Y %I:%M %p') }}
+      </span> 
+    </li>
+    <li class="list_item-name">Room Name: 
+      <span class="list_item-value">
+        {{ reservation.room.room_name }}
+      </span> 
+    </li>
+  </ul>
+    
+  <h3>Room</h3>
+
+  <ul>
+    <li class="list_item-name">Building: 
+      <span class="list_item-value">
+        {{ reservation.room.building }}
+      </span> 
+    </li>
+    <li class="list_item-name">Capacity: 
+      <span class="list_item-value">
+        {{ reservation.room.capacity }}
+      </span> 
+    </li>
+    <li class="list_item-name">Computer: 
+      <span class="list_item-value">
+        {{ reservation.room.computer}}
+      </span> 
+    </li>
+    <li class="list_item-name">Projector: 
+      <span class="list_item-value">
+        {{ reservation.room.projector }}
+      </span> 
+    </li>
+    <li class="list_item-name">Whiteboard: 
+      <span class="list_item-value">
+      {{ reservation.room.whiteboard }}
+      </span> 
+    </li>
+  </ul>
+
+  <h3>Scheduled By</h3>
+
+  <ul>
+    <li class="list_item-name">Name: 
+      <span class="list_item-value">
+        {{ reservation.user.firstname }} {{ reservation.user.lastname }}
+      </span> 
+    </li>
+    <li class="list_item-name">Email: 
+      <span class="list_item-value">
+        {{ reservation.user.email }}
+      </span> 
+    </li>
+    <li class="list_item-name">Phone Extension: 
+      <span class="list_item-value">
+        {{ reservation.user.ext }}
+      </span> 
+    </li>
+  </ul>
+ 
+  <div class="mod_container">
+    {% if reservation.user.id == current_user.id  %}
+      <div>
+        <a href="{{ url_for('pages.update_resv', resv_id=reservation.id) }}" class="mod_link">
+          {{ pencil("svg_icon") }} <span class="mod_link-text">Update</span>
+        </a>
+      </div>
+
+
+      <!-- Delete Link using Custom Confirmation Dialog Box-->
+      <div class="mods">
+        <a id="delete-link" href="#" class="mod_link">
+          {{ delete("svg_icon") }} <span class="mod_link-text">Delete</span>
+        </a>
+      </div>
+      
+      <!-- Custom Confirmation Dialog Box -->
+      <div id="confirm-dialog" class="modal">
+        <div class="modal-content">
+          <span class="close-button" onclick="closeDialog()">&times;</span>
+          <h3 class="modal-title">{{ confirm_title }}</h3>
+          <p class="modal-message">{{ confirm_message }}</p>
+          <div class="modal-button-container">
+            <button class="modal-button" id="confirm-yes-button" data-url="{{ url_for('pages.delete_resv', resv_id=reservation.id) }}">Yes</button>
+            <button class="modal-button" onclick="closeDialog()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+      Not authorized
+    {% endif %} 
+  </div>
+ </div>
+
+
+
+{% endblock %}

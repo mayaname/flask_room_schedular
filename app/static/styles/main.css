@@ -1,0 +1,267 @@
+main.css
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+:root {
+  --background-color: #333;
+  --background-table-alt: #bdbdbd;
+
+  --accent-color1: #ddd;
+  --accent-color2: #666;
+
+  --button-background: #666;
+  --button-hover: #999;
+
+  --text-dark: #333;
+  --text-light: #fbfbfb;
+  --text-muted: #999;
+  --text-table: #333;
+  --text-error: #a02a36;
+
+
+  --flash-border: #666;
+  --error-dark: darkred;
+  --error-light: #ffa7ae;
+  --error-text: darkred;
+  --success-dark: darkgreen;
+  --success-light: #96faad;
+  --success-text: darkgreen;
+  --warning-dark: #da9008;
+  --warning-light: #f9ffa7fd;
+  --warning-text: darkred;
+
+  --image-border: #eee;
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  font-family: "Public Sans", sans-serif;
+  color: #333;
+  line-height: 1.45;
+
+}
+
+/* Navigation */
+.header-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #333;
+  padding: 0.5rem 10%;
+}
+
+.logo {
+  margin-right: auto;
+  font-size: 28px;
+  font-weight: bolder;
+  color: #edf0f1;
+}
+
+.nav_links {
+  list-style: none;
+}
+
+.nav_links li {
+  display: inline-block;
+  padding: 0 20px;
+}
+.nav_links li a{
+  font-size: 16px;
+  font-weight: bold;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.nav_links li a:hover {
+  text-decoration: underline;
+  transition: all 0.3s ease 0;
+}
+
+
+/* Main section */
+.main {
+  max-width: 90%; 
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin: 1rem 0; */
+}
+
+.page_title {
+  text-align: center;
+  margin: 2rem;
+}
+  
+.page_subtitle {
+  margin: 1.5rem;
+}
+
+.section {
+  width: 50%;
+  padding: 0 3rem;
+  margin: 20px auto;
+}
+
+
+/* Menu  section */
+.svg_icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-color);
+  fill: none;
+}
+
+.svg_icon-filled {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
+
+
+.menubar {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+
+.menu_link_container {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu_items {
+  text-align: right;
+}
+
+.menu_link {
+  display: flex;
+  text-decoration: none;
+  justify-content: right;
+  align-items: center;
+  margin-right: 1rem;
+  color: var(--accent-color);
+}
+
+.menu_link:hover {
+  color: var(--accent-color-2);
+}
+
+.menu_link-text {
+  margin-left: 0.5rem;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.menu_link.active .menu_link-text {
+  color: var(--text-muted); 
+  font-weight: bold;
+}
+
+.menu_text {
+  margin-right: 0.5rem;
+  margin-left: 2rem;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+
+/* Flash notification section */
+.flash_container {
+  margin-top: 20px;
+}
+
+.flash {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  border: 1px solid var(--flash-border);
+  border-radius: 6px;
+  box-shadow: 4px 4px 4px rgba(9, 9, 9, 0.4);
+}
+
+.flash .left-section {
+  width: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.flash .right-section {
+  width: 92%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.flash.success .left-section {
+  background-color: var(--success-dark);
+}
+
+.flash.success .right-section {
+  background-color: var(--success-light);
+  color: var(--success-text);
+}
+
+.flash.error .left-section {
+  background-color: var(--error-dark);
+}
+
+.flash.error .right-section {
+  background-color: var(--error-light);
+  color: var(--error-text);
+}
+
+.flash.warning .left-section {
+  background-color: var(--warning-dark);
+}
+
+.flash.warning .right-section {
+  background-color: var(--warning-light);
+  color: var(--warning-text);
+}
+
+.flash .close-btn { 
+  position: absolute; 
+  top: 5px; 
+  right: 5px; 
+  font-size: 15px; 
+  font-weight: bold; 
+  color: var(--text-dark); 
+  cursor: pointer; 
+  padding-right: 10px; }
+
+.flash .close-btn:hover {
+  color: var(--accent-color2);
+}
+
+
+
+
+/* Footer */
+.footer {
+  color: var(--text-muted);
+  padding: 0.5rem;
+  font-size: 1em;
+  text-align: center;
+}
+
+

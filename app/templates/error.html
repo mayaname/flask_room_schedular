@@ -1,0 +1,15 @@
+{% extends 'base_error.html' %}
+
+{% set error_img = ERROR_IMG %}
+
+{% block error_message %} 
+<h3>{{ ERROR_HEADING }}</h3>
+<p>{{ ERROR_MESSAGE_1 }}</p> 
+<p>{{ ERROR_MESSAGE_2 }}</p> 
+<p>{{ ERROR_MESSAGE_3 }}</p> 
+
+{% endblock %}
+
+{% block error_image %} 
+    <img src="{{ url_for('static', filename='images/errors/' ~ error_img) }}" alt="Something went amok!" class="center">
+{% endblock %}

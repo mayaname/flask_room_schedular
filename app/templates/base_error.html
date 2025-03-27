@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/wolftrack_green.ico') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+  <link href="{{ url_for('static',filename='styles/errors.css') }}" rel="stylesheet">
+  {% if error_type %} 
+    <title>Flask Journal - Error {{error_type}}</title>
+  {% else %}
+    <title>Flask Journal - Error</title>
+  {% endif %}
+</head>
+<body>
+  <!-- Header section -->
+  {% include '_header.html' %}
+
+  <main class="main">
+    <div class="flex-container">
+      <div class="error_text">
+        <h1>Opps!</h1>
+        <h2>{{error_type}} Error</h2>
+        <p class="error_message">{% block error_message %} {% endblock %}
+
+      </div>
+      <div class="error_img">
+        {% block error_image %} {% endblock %}        
+        <!-- <img src="../static/imgs/error.jpg" alt="Something went amok!" class="center">  -->
+      </div>
+    </div>
+  </main>
+  <!-- Footer section -->
+  {% include '_footer.html' %}
+</body>
+</html>

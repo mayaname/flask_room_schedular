@@ -1,0 +1,93 @@
+{% extends 'base_main.html'%}
+
+
+
+{% block head_content %} 
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/calendar.css') }}">
+{% endblock %}
+  
+
+
+{% block main_content %}
+  <h1>{{ page_title }}</h1>
+  
+  <div class="section">
+    
+    <div id='calendar'></div>
+
+  </div>
+
+  <!-- Store events data in a script tag to make VSCode happy -->
+  <script id="events-data" type="application/json">
+    {{ events | tojson | safe }}
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+
+        const eventsData = JSON.parse(document.getElementById('events-data').textContent);
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          events: eventsData,
+          eventDidMount: function(info) {
+            // Create a custom tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'custom-tooltip';
+            tooltip.innerHTML = `
+              <strong>${info.event.title}</strong><br>
+              <small>Starts at: ${info.event.start.toLocaleString()}</small><br>
+              <small>Ends at: ${info.event.end.toLocaleString()}</small>
+            `;
+            document.body.appendChild(tooltip);
+
+            // Show the tooltip on mouseover
+            info.el.addEventListener('mouseover', function(e) {
+              tooltip.style.display = 'block';
+              tooltip.style.left = `${e.pageX + 10}px`;
+              tooltip.style.top = `${e.pageY + 10}px`;
+            });
+
+            // Hide the tooltip on mouseout
+            info.el.addEventListener('mouseout', function() {
+              tooltip.style.display = 'none';
+            });
+
+            // Update the tooltip position on mousemove
+            info.el.addEventListener('mousemove', function(e) {
+              tooltip.style.left = `${e.pageX + 10}px`;
+              tooltip.style.top = `${e.pageY + 10}px`;
+            });
+          }
+
+        });
+        calendar.render();
+    });
+  </script>
+
+  <!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const eventsData = JSON.parse(document.getElementById('events-data').textContent);
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          events: eventsData,
+          eventDidMount: function(info) {
+            // Add a tooltip to the event
+            const tooltip = new bootstrap.Tooltip(info.el, {
+              title: `Starts at: ${info.event.start.toLocaleString()}<br>Ends at: ${info.event.end.toLocaleString()}`,
+              placement: 'top',
+              trigger: 'hover',
+              html: true
+            });
+          }
+        });
+        calendar.render();
+    });
+  </script> -->
+
+{% endblock %}

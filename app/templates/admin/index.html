@@ -1,0 +1,8 @@
+{% extends 'admin/master.html' %}
+
+
+{% block access_control %}
+    <a class="btn btn-outline-primary" href="{{ url_for('pages.index') }}">
+        <i class="bi bi-house"></i>AbNor Home</a>
+    {{ super() }}
+{% endblock %}

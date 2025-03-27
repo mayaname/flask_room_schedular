@@ -1,0 +1,16 @@
+{% for reservation in reservations %}
+  <tr class="table_row">
+    <td class="table_cell">{{ reservation.start_time.strftime('%d/%m/%Y %I:%M %p') }}</td>
+    <td class="table_cell">{{ reservation.end_time.strftime('%d/%m/%Y %I:%M %p') }}</td>
+    <td class="table_cell">{{ reservation.room.room_name }}</td>
+    <td class="table_cell">{{ reservation.user.username }}</td>
+    {% if current_user.is_authenticated %}
+      <td class="table_cell">
+        <a href="{{ url_for('pages.details_resv', resv_id=reservation.id) }}" 
+        class="table_link" >
+        Details
+        </a>
+      </td>
+    {% endif %} 
+  </tr>
+{% endfor %}

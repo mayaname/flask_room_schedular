@@ -1,0 +1,142 @@
+/* Forms */
+.form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start;  */
+    margin: 0 auto;
+  }
+  
+  .form_group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;  /* Adds spacing between form groups */
+  }
+  
+  .form_error {
+    color: var(--text-error);
+    font-size: 8px;
+    margin: 0.5rem;
+  }
+  
+  .form_input {
+    /* margin-bottom: 10px; */
+    padding: 3px;
+  
+  }
+  
+  .form_label {
+    margin-bottom: 5px;
+  }
+  
+  .form_submit {
+    display: block;
+    text-align: right;
+  }
+  
+  .form_submit_cancel {
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: 10px;
+  }
+  
+  .form_cancel_link {
+    display: inline;
+  }
+  
+  .form_submit-button {
+    display: inline;
+    margin: 5px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 30px;
+    border-radius: 10px;
+    background-color: var(--button-background);
+    color: var(--text-light);
+    cursor: pointer;
+  }
+  
+  .form_submit-button_sm {
+    display: inline;
+    margin: 5px;
+    border: none;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: var(--button-background);
+    color: var(--text-light);
+    cursor: pointer;
+  }
+  
+  
+  .form_submit-button:hover {
+    background-color: var(--button-hover);
+  }
+  
+  .form_submit-button_sm:hover {
+    background-color: var(--button-hover); 
+  }
+  
+  .form_invalid_feedback {
+    color: var(--text-error);
+    font-size: small;
+  }
+  
+  
+  .section_form {
+    width: 21%;
+    margin: 0 auto;
+    border: 1px solid var(--accent-color1);
+    padding: 30px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4); 
+  }
+  
+  .section_form_md {
+    width: 30%;
+    margin: 0 auto;
+    border: 1px solid var(--accent-color1);
+    padding: 30px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4); 
+  }
+
+  .section_form_lg {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid var(--accent-color1);
+    padding: 30px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4); 
+  }
+
+
+  /* Show/Hide password buttons */
+  .password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .password-container input {
+    flex: 1;
+    width: 100%; 
+  }
+  
+  .password-toggle {
+    margin-left: 8px; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 10px; /* Adjust button height to match textbox*/
+    display: flex;
+    align-items: center; 
+  }
+  
+  .password-toggle .svg_icon {
+    width: 20px;
+    height: 20px;
+    color: #333;
+  }
+  
+  .password-toggle .svg_icon:hover {
+    stroke: #666;
+  }

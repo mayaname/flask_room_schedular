@@ -1,0 +1,31 @@
+<div class="menubar">
+  <div class="menu_items">
+    <a href="{{ url_for('pages.add_resv') }}" 
+       class="menu_link {% if request.path == url_for('pages.add_resv') %}active{% endif %}">
+      {{ plus("svg_icon") }}  
+      <span class="menu_link-text">Reservation</span>  
+    </a>
+  </div>
+  <div class="menu_text">Views:</div>
+  <div class="menu_items">
+    <a href="{{ url_for('pages.calendar') }}" 
+       class="menu_link {% if request.path == url_for('pages.calendar') %}active{% endif %}">
+      {{ calendar("svg_icon") }}  
+      <span class="menu_link-text">Calendar</span>  
+    </a>
+  </div>
+  <div class="menu_items">
+    <a href="{{ url_for('pages.dept_resv') }}" 
+       class="menu_link {% if request.path == url_for('pages.dept_resv') %}active{% endif %}">
+      {{ table("svg_icon") }}  
+      <span class="menu_link-text">Department</span>  
+    </a>
+  </div>
+  <div class="menu_items">
+    <a href="{{ url_for('pages.all_resv') }}" 
+       class="menu_link {% if request.path == url_for('pages.all_resv') %}active{% endif %}">
+      {{ table("svg_icon") }}  
+      <span class="menu_link-text">All Reservations</span>  
+    </a>
+  </div>
+</div>

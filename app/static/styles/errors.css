@@ -1,0 +1,55 @@
+
+body {
+    font-family: "Public Sans", sans-serif;
+}
+
+/* Reset HTML elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    height: 85vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+}
+
+.error_text {
+    background-color: white;
+    width: 400px;
+    margin: 10px;
+    text-align: center;
+    /* line-height: 75px;
+    font-size: 30px; */
+}
+.error_img {
+    background-color: white;
+    width: 400px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.error_message {
+    margin: 20px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}

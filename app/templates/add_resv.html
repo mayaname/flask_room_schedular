@@ -1,0 +1,46 @@
+{% extends "base_main.html" %}
+
+{% block head_content %} 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/forms.css') }}">
+{% endblock %}
+
+{% block main_content %}
+
+  <h1>{{ page_title }}</h1>
+
+  <section class="section_form">
+    <form class="reservation-form"  method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="form_group">
+            <label for="start_time">{{ form.start_time.label.text }}</label>
+            {{ form.start_time(id="start_time", size=20, class="form_input", autocomplete="off", autofocus=true,) }}
+            {% for error in form.start_time.errors %}
+            <span class="form_error">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form_group">
+            <label for="end_time">{{ form.end_time.label.text }}</label>
+            {{ form.end_time(id="end_time") }}
+            {% for error in form.end_time.errors %}
+            <span class="form_error">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form_group">
+            <label for="room_id">{{ form.room_id.label.text }}</label>
+            {{ form.room_id(id="room_id") }}
+            {% for error in form.room_id.errors %}
+            <span class="form_error">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form_submit">
+          {{ form.submit(class="form_submit-button") }} 
+        </div>
+    
+    </form>
+  </section>
+{% endblock %}
+
