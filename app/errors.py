@@ -12,8 +12,6 @@ Revisions:
 from flask import render_template
 from app.extensions import db
 
-# Ref to images on OneDrive
-# IMAGE_REF = 'https://1drv.ms/i/c/577c91344c497a71/'
 
 ERROR = {
     '403_IMG':'error.webp',
@@ -38,7 +36,6 @@ ERROR = {
 def forbidden(e):
     error_type = '403'
     return render_template("error.html", 
-                        #    IMAGE_REF=IMAGE_REF,
                            ERROR_IMG=ERROR['403_IMG'],
                            ERROR_HEADING = ERROR['403_HEADING'],
                            ERROR_MESSAGE_1 = ERROR['403_MESSAGE_1'],
@@ -49,7 +46,6 @@ def forbidden(e):
 def page_not_found(e):
     error_type = '404'
     return render_template("error.html", 
-                        #    IMAGE_REF=IMAGE_REF,
                            ERROR_IMG=ERROR['404_IMG'],
                            ERROR_HEADING = ERROR['404_HEADING'],
                            ERROR_MESSAGE_1 = ERROR['404_MESSAGE_1'],
@@ -61,7 +57,6 @@ def internal_server_error(e):
     error_type = '500'
     db.session.rollback()
     return render_template('error.html', 
-                        #    IMAGE_REF=IMAGE_REF,
                            ERROR_IMG=ERROR['500_IMG'],
                            ERROR_HEADING = ERROR['500_HEADING'],
                            ERROR_MESSAGE_1 = ERROR['500_MESSAGE_1'],
